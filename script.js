@@ -43,6 +43,11 @@ const hearts = [
     new Heart({x: 430, y: 417})
 ]
 
+const ghosts = [
+    new Ghost({x:1000, y:350}),
+    new Ghost({x:850, y:500})
+]
+
 //adds platforms
 const platforms = [
     new Platform({x: 400, y: 450}), 
@@ -79,20 +84,42 @@ function animate(){
     ctx.drawImage(background8, 0 , 0);
     ctx.drawImage(background9, 0 , 0);
     
-   if (platforms.at(-1).pos.x < -200) {
+    function getRandom(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+   if (platforms.at(-1).pos.x < 450) {
        console.log('new plateform')
-       platforms.push(new Platform({x: 800, y: Math.random()*400}))
+       platforms.push(new Platform({x: 900, y: getRandom(250, 500)}))
    }
-    
-   hearts.forEach(heart => {
+
+   if (ghosts.at(-1).pos.x < 300) {
+    console.log('new ghost')
+    ghosts.push(new Ghost({x: 900, y: getRandom(250, 500)}))
+}
+  
+   
+    hearts.forEach(heart => {
     heart.draw()
-})
+    })
 
     platforms.forEach(platform => {
         platform.draw()
     })
 
-    
+    ghosts.forEach(ghost => {
+        ghost.update()
+        //take the cat width to track when the ghost touches his x
+        if(player.pos.x + player.width >= ghost.pos.x){
+            console.log('LOSER')
+
+        }
+
+        // as soon as the first x of 1rst ghost : loser 
+        // start back HERE ------------------------------------
+
+        })
+
     player.update()
     //player update after everything (player devant plartform + background)
 

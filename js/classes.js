@@ -67,7 +67,7 @@ class Platform {
 }
 
 
-//Heart creation : properties
+//Collect items : Heart creation : properties
 class Heart {
     constructor({x, y}){
         this.pos = {
@@ -88,38 +88,37 @@ class Heart {
 
 }
 
-// class Layer {
-//     constructor(img, chgmtvitesse){
-//         this.x = 0
-//         this.y = 0
+//Enemy Ghost creation : properties
+class Ghost {
+    constructor({x, y}) {
+        this.pos = {
+            x: x,
+            y: y
+        }
+        //pour le deplacement 
+        this.velocity = {
+            x: -0.5,
+            y: 0
+        }
+
+        this.width = 50
+        this.height = 50
+    }
+
+    // draw the player
+    draw() {
+        const playerImage = new Image();
+        playerImage.src = './img/sopGhost.png';
+        ctx.drawImage(playerImage, this.pos.x, this.pos.y, this.width, this.height)
+    }
+
+    update() {
+        this.draw()
+        this.pos.x += this.velocity.x
+        this.pos.y += this.velocity.y
         
-//         this.width = 923
-//         this.height = 590
 
-//         this.x2 = this.width
-
-//         this.img = img
-
-//         this.chgmtvitesse = chgmtvitesse
-//         this.vitesse = playerVitesse * this.chgmtvitesse
-//     }
-//     update(){
-//         this.speed = playerVitesse * this.chgmtvitesse
-//         if(this.x <= this.width){
-//             this.x = this.width + this.x - this.vitesse //pour pas de trou entre les images
-//         }
-//         if(this.x2 <= this.width){
-//             this.x2 = this.width + this.x - this.vitesse //pour pas de trou entre les images
-//         }
-//         this.x = Math.floor(this.x - this.vitesse)
-//         this.x2 = Math.floor(this.x2 - this.vitesse)
-//     }
-
-//     draw(){
-//         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
-//         ctx.drawImage(this.img, this.x2, this.y, this.width, this.height)
+    }
+}
 
 
-//     }
-
-// }
