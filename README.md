@@ -4,6 +4,10 @@
 ## Credits
 
 Background forest : Eder Munz
+
 Cat asset : SeethingSwarm
+
 Ghost asset : Sophie Molina Lopez
+
 Music : Mason Pike
+
